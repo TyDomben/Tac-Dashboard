@@ -37,7 +37,7 @@ export function BallisticsTab({ sensors }) {
                 style={{ fontFamily: mono, color: low ? "#ff4444" : "#00ff88", textShadow: `0 0 30px ${low ? "#ff4444" : "#00ff88"}66` }}>
                 {String(rounds).padStart(2, "0")}
               </div>
-              <div className="text-xs tracking-widest mt-1" style={{ color: "#00ff8833", fontFamily: mono }}>
+              <div className="text-xs tracking-widest mt-1" style={{ color: "#5a9970", fontFamily: mono }}>
                 {ammoKey} · {ammo.mag}RD
               </div>
             </div>
@@ -82,13 +82,13 @@ export function BallisticsTab({ sensors }) {
       <Panel title="G1 BALLISTICS · LOCAL COMPUTE">
         <div className="grid grid-cols-2 gap-3 mb-3">
           <div>
-            <div className="text-xs mb-1" style={{ color: "#00ff8855", fontFamily: mono }}>RANGE (m)</div>
+            <div className="text-xs mb-1" style={{ color: "#7dbb99", fontFamily: mono }}>RANGE (m)</div>
             <input type="range" min="10" max="800" value={range}
               onChange={(e) => setRange(Number(e.target.value))} className="w-full accent-green-400" />
             <div className="text-center text-sm mt-1" style={{ color: "#00ff88", fontFamily: mono }}>{range}m</div>
           </div>
           <div>
-            <div className="text-xs mb-1" style={{ color: "#00ff8855", fontFamily: mono }}>WIND (mph)</div>
+            <div className="text-xs mb-1" style={{ color: "#7dbb99", fontFamily: mono }}>WIND (mph)</div>
             <input type="range" min="-25" max="25" value={wind}
               onChange={(e) => setWind(Number(e.target.value))} className="w-full accent-green-400" />
             <div className="text-center text-sm mt-1"
@@ -107,10 +107,10 @@ export function BallisticsTab({ sensors }) {
         </div>
         {log.length > 0 && (
           <div>
-            <div className="text-xs mb-1" style={{ color: "#00ff8822", fontFamily: mono }}>SHOT LOG</div>
+            <div className="text-xs mb-1" style={{ color: "#3d7755", fontFamily: mono }}>SHOT LOG</div>
             {log.map((s, i) => (
               <div key={i} className="flex justify-between text-xs py-0.5"
-                style={{ color: "#00ff8844", fontFamily: mono, borderBottom: "1px solid rgba(0,255,136,0.06)" }}>
+                style={{ color: "#88bb99", fontFamily: mono, borderBottom: "1px solid rgba(0,255,136,0.06)" }}>
                 <span>{s.t}</span><span>{s.r}rnd</span><span>{s.range}m</span><span>{s.el}°</span>
               </div>
             ))}

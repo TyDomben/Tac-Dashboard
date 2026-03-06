@@ -49,7 +49,7 @@ function InitScreen({ onInit, onSkip }) {
           {SENSOR_ROWS.map(([l, a]) => (
             <div key={l} className="flex justify-between">
               <span style={{ color: "#00ff88" }}>{l}</span>
-              <span style={{ color: "#00ff8844" }}>{a}</span>
+              <span style={{ color: "#88bb99" }}>{a}</span>
             </div>
           ))}
         </div>
@@ -135,9 +135,9 @@ export default function App() {
           <div className="w-1.5 h-1.5 rounded-full animate-pulse"
             style={{ background: "#00ff88", boxShadow: "0 0 5px #00ff88" }} />
           <span className="text-xs tracking-widest" style={{ color: "#00ff88", fontFamily: mono }}>TACTICAL HUB</span>
-          <span className="text-xs" style={{ color: "#00ff8828", fontFamily: mono }}>{live ? "LIVE" : "SIM"}</span>
+          <span className="text-xs" style={{ color: "#5a9970", fontFamily: mono }}>{live ? "LIVE" : "SIM"}</span>
         </div>
-        <div className="flex items-center gap-3 text-xs" style={{ color: "#00ff8844", fontFamily: mono }}>
+        <div className="flex items-center gap-3 text-xs" style={{ color: "#88bb99", fontFamily: mono }}>
           {acoustic.threat && <span className="animate-pulse" style={{ color: "#ff4444" }}>⚠ UAV</span>}
           <span>{sensors.az.toFixed(0)}°</span>
           <span>{new Date().toLocaleTimeString("en", { hour12: false })}</span>

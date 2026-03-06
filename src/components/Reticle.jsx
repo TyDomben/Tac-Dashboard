@@ -14,8 +14,8 @@ export function Reticle({ stab, locked }) {
           </feMerge>
         </filter>
       </defs>
-      <circle cx="100" cy="100" r="60" fill="none" stroke={`${color}18`} strokeWidth="0.5" />
-      <circle cx="100" cy="100" r="36" fill="none" stroke={`${color}12`} strokeWidth="0.5" />
+      <circle cx="100" cy="100" r="60" fill="none" stroke={`${color}40`} strokeWidth="0.8" />
+      <circle cx="100" cy="100" r="36" fill="none" stroke={`${color}30`} strokeWidth="0.8" />
       {[0, 90, 180, 270].map((a) => {
         const rad = (a * Math.PI) / 180;
         return (
@@ -25,7 +25,7 @@ export function Reticle({ stab, locked }) {
             stroke={color} strokeWidth="1.5" filter="url(#g)" />
         );
       })}
-      <circle cx="100" cy="100" r={spread * 0.7} fill="none" stroke={`${color}44`} strokeWidth="1" />
+      <circle cx="100" cy="100" r={spread * 0.7} fill="none" stroke={`${color}66`} strokeWidth="1" />
       <circle cx="100" cy="100" r="2.5" fill={color} filter="url(#g)" />
       {locked && [45, 135, 225, 315].map((a) => {
         const rad = (a * Math.PI) / 180, d = 22;
