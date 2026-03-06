@@ -44,7 +44,7 @@ function InitScreen({ onInit, onSkip }) {
     <div className="min-h-screen flex flex-col items-center justify-center p-8" style={{ background: "#000a03" }}>
       <div className="w-full max-w-xs text-center">
         <div className="text-2xl tracking-widest mb-1" style={{ color: "#00ff88", fontFamily: mono }}>SBC TACTICAL</div>
-        <div className="text-xs tracking-widest mb-8" style={{ color: "#00ff8833", fontFamily: mono }}>IPHONE NATIVE · v2.2.0</div>
+        <div className="text-xs tracking-widest mb-8" style={{ color: "#5a9970", fontFamily: mono }}>IPHONE NATIVE · v2.2.0</div>
         <div className="mb-6 text-xs space-y-1.5 text-left" style={{ fontFamily: mono }}>
           {SENSOR_ROWS.map(([l, a]) => (
             <div key={l} className="flex justify-between">
@@ -58,10 +58,10 @@ function InitScreen({ onInit, onSkip }) {
           ⬢ INITIALIZE SENSORS
         </button>
         <button onClick={onSkip} className="w-full py-2 text-xs tracking-widest"
-          style={{ color: "#00ff8833", background: "transparent", border: "none", fontFamily: mono }}>
+          style={{ color: "#5a9970", background: "transparent", border: "none", fontFamily: mono }}>
           SKIP → SIM MODE
         </button>
-        <div className="mt-4 text-xs" style={{ color: "#00ff8822", fontFamily: mono }}>
+        <div className="mt-4 text-xs" style={{ color: "#3d7755", fontFamily: mono }}>
           iOS 13+ requires tap to grant motion
         </div>
       </div>
@@ -75,8 +75,8 @@ function BootScreen({ lines }) {
       <div className="w-full max-w-sm">
         {lines.map((l, i) => (
           <div key={i} className="text-xs mb-1"
-            style={{ fontFamily: mono, color: i === lines.length - 1 ? "#00ff88" : "#00ff8844" }}>
-            <span style={{ color: "#00ff8820" }}>[{String(i).padStart(2, "0")}]</span> {l}
+            style={{ fontFamily: mono, color: i === lines.length - 1 ? "#00ff88" : "#b8ffd0" }}>
+            <span style={{ color: "#5a9970" }}>[{String(i).padStart(2, "0")}]</span> {l}
           </div>
         ))}
         <div className="mt-4 flex gap-1">
@@ -130,7 +130,7 @@ export default function App() {
     <div className="min-h-screen" style={{ background: "#000a03" }}>
       {/* Header */}
       <div className="sticky top-0 z-50 px-3 py-2 flex items-center justify-between"
-        style={{ background: "rgba(0,5,2,.98)", borderBottom: "1px solid rgba(0,255,136,.12)", backdropFilter: "blur(8px)" }}>
+        style={{ background: "rgba(0,5,2,.98)", borderBottom: "1px solid rgba(0,255,136,.35)", backdropFilter: "blur(8px)" }}>
         <div className="flex items-center gap-2">
           <div className="w-1.5 h-1.5 rounded-full animate-pulse"
             style={{ background: "#00ff88", boxShadow: "0 0 5px #00ff88" }} />
@@ -150,8 +150,8 @@ export default function App() {
           <button key={t.id} onClick={() => setTab(t.id)} className="flex-shrink-0 px-3 py-2 text-xs tracking-widest"
             style={{
               fontFamily: mono,
-              border: `1px solid ${tab === t.id ? "#00ff8844" : "#00ff8815"}`,
-              color: tab === t.id ? "#00ff88" : "#00ff8833",
+              border: `1px solid ${tab === t.id ? "rgba(0,255,136,0.5)" : "rgba(0,255,136,0.22)"}`,
+              color: tab === t.id ? "#00ff88" : "#5a9970",
               background: tab === t.id ? "rgba(0,255,136,.07)" : "transparent",
             }}>
             {t.l}

@@ -52,15 +52,15 @@ export function BallisticsTab({ sensors }) {
             )}
             <div className="flex gap-2">
               <button onClick={() => setRounds((p) => Math.max(0, p - 1))} className="flex-1 py-2 text-xl"
-                style={{ border: "1px solid #00ff8822", color: "#00ff88", fontFamily: mono }}>−</button>
+                style={{ border: "1px solid rgba(0,255,136,0.3)", color: "#00ff88", fontFamily: mono }}>−</button>
               <button onClick={fire} className="flex-1 py-2 text-xs tracking-wider"
-                style={{ border: "1px solid #00ff8855", color: "#00ff88", background: "rgba(0,255,136,0.07)", fontFamily: mono }}>
+                style={{ border: "1px solid rgba(0,255,136,0.5)", color: "#00ff88", background: "rgba(0,255,136,0.07)", fontFamily: mono }}>
                 FIRE
               </button>
               <button onClick={() => setRounds(ammo.mag)} className="py-2 px-3 text-xs"
-                style={{ border: "1px solid #00ff8822", color: "#00ff88", fontFamily: mono }}>RLD</button>
+                style={{ border: "1px solid rgba(0,255,136,0.3)", color: "#00ff88", fontFamily: mono }}>RLD</button>
               <button onClick={() => setRounds((p) => Math.min(ammo.mag, p + 1))} className="flex-1 py-2 text-xl"
-                style={{ border: "1px solid #00ff8822", color: "#00ff88", fontFamily: mono }}>+</button>
+                style={{ border: "1px solid rgba(0,255,136,0.3)", color: "#00ff88", fontFamily: mono }}>+</button>
             </div>
           </div>
           <div className="w-28">
@@ -69,8 +69,8 @@ export function BallisticsTab({ sensors }) {
                 style={{
                   fontFamily: mono,
                   background: ammoKey === k ? "rgba(0,255,136,0.1)" : "transparent",
-                  border: `1px solid ${ammoKey === k ? "#00ff8844" : "#00ff8815"}`,
-                  color: ammoKey === k ? "#00ff88" : "#00ff8844",
+                  border: `1px solid ${ammoKey === k ? "rgba(0,255,136,0.5)" : "rgba(0,255,136,0.22)"}`,
+                  color: ammoKey === k ? "#00ff88" : "#7dbb99",
                 }}>
                 {k}
               </button>
@@ -107,10 +107,10 @@ export function BallisticsTab({ sensors }) {
         </div>
         {log.length > 0 && (
           <div>
-            <div className="text-xs mb-1" style={{ color: "#3d7755", fontFamily: mono }}>SHOT LOG</div>
+            <div className="text-xs mb-1" style={{ color: "#7dbb99", fontFamily: mono }}>SHOT LOG</div>
             {log.map((s, i) => (
               <div key={i} className="flex justify-between text-xs py-0.5"
-                style={{ color: "#88bb99", fontFamily: mono, borderBottom: "1px solid rgba(0,255,136,0.06)" }}>
+                style={{ color: "#b8ffd0", fontFamily: mono, borderBottom: "1px solid rgba(0,255,136,0.2)" }}>
                 <span>{s.t}</span><span>{s.r}rnd</span><span>{s.range}m</span><span>{s.el}°</span>
               </div>
             ))}
