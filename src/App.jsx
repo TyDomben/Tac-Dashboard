@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { useSensors } from "./hooks/useSensors";
 import { useAcoustic } from "./hooks/useAcoustic";
-import { useVoice } from "./hooks/useVoice";
 import { VisionTab } from "./tabs/VisionTab";
 import { BallisticsTab } from "./tabs/BallisticsTab";
 import { DroneTab } from "./tabs/DroneTab";
@@ -31,7 +30,6 @@ const SENSOR_ROWS = [
   ["GPS",           "Geolocation"],
   ["CAMERA",        "getUserMedia"],
   ["ACOUSTIC",      "Web Audio"],
-  ["VOICE",         "SpeechRecognition"],
 ];
 
 const TABS = [
@@ -97,15 +95,9 @@ export default function App() {
   const [live, setLive] = useState(false);
   const [tab, setTab] = useState("vision");
   const [bootLines, setBootLines] = useState([]);
-  const [voiceCmd, setVoiceCmd] = useState(null);
 
   const sensors = useSensors(live);
   const acoustic = useAcoustic();
-  const voice = useVoice(useCallback((cmd) => setVoiceCmd(cmd), []));
-
-  useEffect(() => {
-    if (voiceCmd) setTimeout(() => setVoiceCmd(null), 100);
-  }, [voiceCmd]);
 
   const boot = useCallback((isLive) => {
     setLive(isLive);
@@ -116,7 +108,6 @@ export default function App() {
       "DeviceMotion: READY",
       "Geolocation: READY",
       "Web Audio API: READY",
-      "SpeechRecognition: READY",
       "G1 BALLISTICS ENGINE: LOADED",
       "ACOUSTIC FFT PIPELINE: LOADED",
       `IMU SOURCE: ${isLive ? "LIVE HARDWARE" : "SIMULATION"}`,
@@ -148,7 +139,6 @@ export default function App() {
         </div>
         <div className="flex items-center gap-3 text-xs" style={{ color: "#00ff8844", fontFamily: mono }}>
           {acoustic.threat && <span className="animate-pulse" style={{ color: "#ff4444" }}>⚠ UAV</span>}
-          {voice.on && <span style={{ color: "#00ff8877" }}>🎤</span>}
           <span>{sensors.az.toFixed(0)}°</span>
           <span>{new Date().toLocaleTimeString("en", { hour12: false })}</span>
         </div>
@@ -172,9 +162,9 @@ export default function App() {
       {/* Content */}
       <div className="p-3 max-w-2xl mx-auto">
         {tab === "vision"     && <VisionTab sensors={sensors} />}
-        {tab === "ballistics" && <BallisticsTab sensors={sensors} voiceCmd={voiceCmd} />}
+        {tab === "ballistics" && <BallisticsTab sensors={sensors} />}
         {tab === "drone"      && <DroneTab acoustic={acoustic} />}
-        {tab === "system"     && <SystemTab sensors={sensors} voice={voice} acoustic={acoustic} />}
+        {tab === "system"     && <SystemTab sensors={sensors} acoustic={acoustic} />}
       </div>
     </div>
   );

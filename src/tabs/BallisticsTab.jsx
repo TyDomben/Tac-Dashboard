@@ -1,24 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Panel } from "../components/Panel";
 import { Stat } from "../components/Stat";
 import { AMMO_PRESETS, computeShot } from "../lib/ballistics";
 
 const mono = "'Share Tech Mono', monospace";
 
-export function BallisticsTab({ sensors, voiceCmd }) {
+export function BallisticsTab({ sensors }) {
   const [ammoKey, setAmmoKey] = useState("5.56 NATO");
   const [rounds, setRounds] = useState(30);
   const [range, setRange] = useState(25);
   const [wind, setWind] = useState(0);
   const [log, setLog] = useState([]);
   const ammo = AMMO_PRESETS[ammoKey];
-
-  useEffect(() => setRounds(ammo.mag), [ammoKey]);
-
-  useEffect(() => {
-    if (voiceCmd === "fire") fire();
-    if (voiceCmd === "reload" || voiceCmd === "zero") setRounds(ammo.mag);
-  }, [voiceCmd]);
 
   const shot = computeShot(ammo, range, wind, sensors.el);
   const pct = (rounds / ammo.mag) * 100;
